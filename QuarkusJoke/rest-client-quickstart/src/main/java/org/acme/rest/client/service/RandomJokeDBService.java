@@ -15,9 +15,13 @@ public class RandomJokeDBService {
 
     @Inject
     JokeRepository jokeRepository;
-    public void saveJoke(JokeDTO joke){
-        logger.info("saveJoke");
-        RandomJoke randomJoke = new RandomJoke(joke);
-        jokeRepository.create(randomJoke);
+    public void saveJoke(JokeDTO joke) {
+        try {
+            logger.info("saveJoke");
+            RandomJoke randomJoke = new RandomJoke(joke);
+            jokeRepository.create(randomJoke);
+        } catch (Exception e) {
+            System.out.println("OOPS!!! something went wrong while saving  " + e.getMessage());
+        }
     }
 }
