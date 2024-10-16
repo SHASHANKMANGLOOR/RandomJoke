@@ -1,0 +1,21 @@
+quarkus:
+  tls:
+    trust-all: true
+  rest-client:
+      extensions-api:
+        url: https://official-joke-api.appspot.com/random_joke
+  datasource:
+    db-kind: h2
+    jdbc:
+      url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE  # Use file-based DB
+      driver: org.h2.Driver
+      username: joke
+      password:  # Leave empty for H2
+    initialization-mode: always  # Always initialize the database
+  hibernate-orm:
+    database:
+      generation: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
